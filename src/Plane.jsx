@@ -45,6 +45,11 @@ function Plane() {
     cubeTwo.position.set(7, -1.1, 7);
     scene.add(cubeTwo)
 
+    // Group
+    const group = new THREE.Group();
+    group.add(plane, cube, cubeTwo);
+    scene.add(group);
+
     // Renderer
     const renderer = new THREE.WebGLRenderer({ antialize: true });
     renderer.setSize(width, height);
@@ -54,6 +59,7 @@ function Plane() {
 
 
     function animate() {
+      group.rotation.x += 0.01
       cube.rotation.z += 0.01
       cubeTwo.rotation.z += 0.01
       requestAnimationFrame(animate);
