@@ -29,7 +29,7 @@ function App() {
     cube.position.set(-5, 0, 0);
     scene.add(cube)
 
-    const capsuleGeometry = new THREE.CapsuleGeometry(1, 1);
+    const capsuleGeometry = new THREE.CapsuleGeometry(1, 1, 32, 32);
     const capsuleMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     const capsule = new THREE.Mesh(capsuleGeometry, capsuleMaterial);
     capsule.position.set(0, 0, 0);
