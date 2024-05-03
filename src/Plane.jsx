@@ -20,26 +20,14 @@ function Plane() {
     const farClipping = 9999;
 
     const camera = new THREE.PerspectiveCamera(viewAngle, width / height, nearClipping, farClipping);
-    camera.position.set(0, 0, 10);
+    camera.position.set(0, 10, 45);
 
     // Mesh
-    const cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
-    const cubeMaterial = new THREE.MeshBasicMaterial({ color: "#00FFAA" });
-    const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-    cube.position.set(-10, 0, -20);
-    scene.add(cube)
-
-    const capsuleGeometry = new THREE.CapsuleGeometry(1, 1, 32, 32);
-    const capsuleMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const capsule = new THREE.Mesh(capsuleGeometry, capsuleMaterial);
-    capsule.position.set(0, 0, -10);
-    scene.add(capsule);
-
-    const coneGeometry = new THREE.ConeGeometry(1, 2, 32);
-    const coneMaterial = new THREE.MeshBasicMaterial({ color: "blue" });
-    const cone = new THREE.Mesh(coneGeometry, coneMaterial);
-    cone.position.set(5, 0, 0)
-    scene.add(cone);
+    const planeGeometry = new THREE.PlaneGeometry(20, 20);
+    const planeMaterial = new THREE.MeshBasicMaterial({ color: 'green', side: THREE.DoubleSide });
+    const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+    plane.rotation.set(5, 0, 0);
+    scene.add(plane);
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ antialize: true });
@@ -48,18 +36,7 @@ function Plane() {
     // JS to append domElement into our HTML 
     containerRef.current.appendChild(renderer.domElement);
 
-    function animate() {
-      cube.rotation.y += 0.01
-      cube.rotation.x += 0.01
-      capsule.rotation.y += 0.01
-      capsule.rotation.x += 0.01
-      cone.rotation.y += 0.01
-      cone.rotation.x += 0.01
-      requestAnimationFrame(animate);
-      renderer.render(scene, camera);
-    }
-
-    animate();
+    renderer.render(scene, camera);
   }, [containerRef]);
 
   return (
