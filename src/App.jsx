@@ -8,7 +8,7 @@ function App() {
     if (!containerRef.current || containerRef.current.children.length !== 0) {
       return;
     }
-    
+
     // Scene
     const scene = new THREE.Scene();
 
@@ -26,8 +26,14 @@ function App() {
     const cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
     const cubeMaterial = new THREE.MeshBasicMaterial({ color: "#00FFAA" });
     const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-    cube.position.set(0, 0, 0);
+    cube.position.set(-5, 0, 0);
     scene.add(cube)
+
+    const capsuleGeometry = new THREE.CapsuleGeometry(1, 1);
+    const capsuleMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const capsule = new THREE.Mesh(capsuleGeometry, capsuleMaterial);
+    capsule.position.set(0, 0, 0);
+    scene.add(capsule);
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ antialize: true });
@@ -39,6 +45,8 @@ function App() {
     function animate() {
       cube.rotation.y += 0.01
       cube.rotation.x += 0.01
+      capsule.rotation.y += 0.01
+      capsule.rotation.x += 0.01
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
     }
