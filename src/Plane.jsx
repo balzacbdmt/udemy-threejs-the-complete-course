@@ -34,6 +34,7 @@ function Plane() {
     const cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
     const cubeMaterial = new THREE.MeshBasicMaterial({ color: "#00FFAA" });
     const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+    cube.position.set(0, 1, 0);
     cube.rotation.set(DEFAULT_X_ROTATION, 0, 0);
     scene.add(cube)
 
@@ -41,7 +42,7 @@ function Plane() {
     const cubeTwoMaterial = new THREE.MeshBasicMaterial({ color: "red" });
     const cubeTwo = new THREE.Mesh(cubeTwoGeometry, cubeTwoMaterial);
     cubeTwo.rotation.set(DEFAULT_X_ROTATION, 0, 0);
-    cubeTwo.position.set(7, 0, 7);
+    cubeTwo.position.set(7, -1.1, 7);
     scene.add(cubeTwo)
 
     // Renderer
