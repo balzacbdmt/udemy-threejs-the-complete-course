@@ -26,20 +26,23 @@ function Plane() {
 
     // Mesh
     const planeGeometry = new THREE.PlaneGeometry(20, 20);
-    const planeMaterial = new THREE.MeshBasicMaterial({ color: 'green', side: THREE.DoubleSide });
+    const planeMaterial = new THREE.MeshBasicMaterial({
+      color: "yellow",
+      side: THREE.DoubleSide,
+    });
     const plane = new THREE.Mesh(planeGeometry, planeMaterial);
     plane.rotation.set(DEFAULT_X_ROTATION, 0, 0);
     scene.add(plane);
 
     const cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
-    const cubeMaterial = new THREE.MeshBasicMaterial({ color: "#00FFAA" });
+    const cubeMaterial = new THREE.MeshStandardMaterial({ color: "#00FFAA" });
     const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
     cube.position.set(0, 1, 0);
     cube.rotation.set(DEFAULT_X_ROTATION, 0, 0);
     scene.add(cube)
 
     const cubeTwoGeometry = new THREE.BoxGeometry(2, 2, 2);
-    const cubeTwoMaterial = new THREE.MeshBasicMaterial({ color: "red" });
+    const cubeTwoMaterial = new THREE.MeshStandardMaterial({ color: "red" });
     const cubeTwo = new THREE.Mesh(cubeTwoGeometry, cubeTwoMaterial);
     cubeTwo.rotation.set(DEFAULT_X_ROTATION, 0, 0);
     cubeTwo.position.set(7, -1.1, 7);
@@ -50,6 +53,10 @@ function Plane() {
     group.add(plane, cube, cubeTwo);
     scene.add(group);
 
+    // Light
+    const light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
+    scene.add(light);
+
     // Renderer
     const renderer = new THREE.WebGLRenderer({ antialize: true });
     renderer.setSize(width, height);
@@ -59,7 +66,7 @@ function Plane() {
 
 
     function animate() {
-      group.rotation.x += 0.01
+      // group.rotation.y += 0.01
       cube.rotation.z += 0.01
       cubeTwo.rotation.z += 0.01
       requestAnimationFrame(animate);
