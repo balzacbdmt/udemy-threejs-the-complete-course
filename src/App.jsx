@@ -26,13 +26,13 @@ function App() {
     const cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
     const cubeMaterial = new THREE.MeshBasicMaterial({ color: "#00FFAA" });
     const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-    cube.position.set(-5, 0, 0);
+    cube.position.set(-10, 0, -20);
     scene.add(cube)
 
     const capsuleGeometry = new THREE.CapsuleGeometry(1, 1, 32, 32);
     const capsuleMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     const capsule = new THREE.Mesh(capsuleGeometry, capsuleMaterial);
-    capsule.position.set(0, 0, 0);
+    capsule.position.set(0, 0, -10);
     scene.add(capsule);
 
     const coneGeometry = new THREE.ConeGeometry(1, 2, 32);
