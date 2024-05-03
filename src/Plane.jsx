@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-function App() {
+function Plane() {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -69,4 +69,4 @@ function App() {
   )
 }
 
-export default App
+export default Plane
